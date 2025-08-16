@@ -114,5 +114,67 @@ The scanner recognizes these common services:
 - Port 8080: HTTP-Alt
 - Port 9200: Elasticsearch
 
+## Testing the Scanner
+
+### Method 1: Test Server (Recommended)
+Start local test servers to verify the scanner detects open ports:
+
+```bash
+# Start test servers in one terminal
+python3 test_server.py
+
+# In another terminal or GUI, scan:
+# Target: 127.0.0.1
+# Ports: 8000-10000  
+# Timeout: 1
+```
+
+This creates 6 test servers on ports 8080, 8443, 9000, 9001, 9002, 9999.
+
+### Method 2: Integration Tests
+Run automated tests with real servers:
+
+```bash
+# Run unit tests (mock testing)
+python3 run_tests.py
+
+# Run integration tests (real servers)
+python3 test_with_real_ports.py
+```
+
+### Method 3: Interactive Demo
+Try the guided demo:
+
+```bash
+python3 demo_scanner.py
+```
+
+### Method 4: Check Your Own Services
+Look for services you know are running:
+
+**Common services to check:**
+- Web servers: ports 80, 443, 8080, 8000
+- SSH: port 22 
+- Database: ports 3306 (MySQL), 5432 (PostgreSQL)
+- Development servers: ports 3000, 8080, 9000
+
+### Method 5: Public Services (Use Responsibly)
+Test against well-known public services with permission:
+- `google.com` ports 80, 443 (should be open)
+- Your own website/server
+
+**⚠️ Only scan systems you own or have explicit permission to test!**
+
+## Testing Results
+When the scanner is working correctly, you should see:
+- **Progress bar** advancing from 0% to 100%
+- **Open ports** listed in the results table
+- **Service names** identified (HTTP, SSH, etc.)
+- **Log messages** showing scan progress and findings
+
+If you only see closed ports everywhere, it usually means:
+- Good security! Most systems should have minimal open ports
+- Use the test server method above to verify the scanner works
+
 ## Legal Notice
 This tool is intended for defensive security purposes only. Users are responsible for ensuring they have proper authorization before scanning any network or system. Unauthorized network scanning may violate local laws and regulations.
