@@ -1,0 +1,5 @@
+# No external dependencies required - uses only Python standard library
+# tkinter (usually included with Python)
+# socket (standard library)
+# threading (standard library)
+# ipaddress (standard library)
